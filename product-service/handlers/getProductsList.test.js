@@ -1,12 +1,12 @@
 'use strict';
 
 import { getProductsList } from './getProductsList';
-import { headers, productsMockData } from '../utils/constants';
+import { productMockItem } from "../utils/constants";
 
 describe('getProductsList', () => {
     test('returns products', async () => {
         const data = await getProductsList();
 
-        expect(data).toEqual({ body: JSON.stringify(productsMockData), headers, statusCode: 200 });
+        expect(JSON.parse(data.body)[9]).toEqual(productMockItem);
     });
 });

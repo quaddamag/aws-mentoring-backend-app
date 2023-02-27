@@ -7,9 +7,12 @@ provider:
   stage: dev
   region: eu-central-1
 
+useDotenv: true
+
 plugins:
   - serverless-webpack
   - serverless-auto-swagger
+  - serverless-dotenv-plugin
 
 package:
   individually: true
@@ -23,6 +26,7 @@ custom:
     title: 'product-service-documentation'
     apiType: 'http'
     basePath: '/dev'
+    typefiles: ['./swagger/types/product.d.ts']
 
 functions:
   getProductsList:
@@ -37,6 +41,15 @@ functions:
     handler: handlers/getProductById.getProductById
     events:
       - http:
-          method: "get"
-          path: "products/{id}"
+          method: 'get'
+          path: 'products/{id}'
           cors: true
+
+  createProduct:
+    handler: handlers/createProduct.createProduct
+    events:
+      - http:
+          method: 'post'
+          path: 'products'
+          cors: true
+          bodyType: 'CreateProductRequestBody'

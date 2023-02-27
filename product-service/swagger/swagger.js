@@ -23,6 +23,33 @@
             "description": "200 response"
           }
         }
+      },
+      "post": {
+        "summary": "createProduct",
+        "description": "",
+        "operationId": "createProduct.post.products",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Body required in the request",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/CreateProductRequestBody"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200 response"
+          }
+        }
       }
     },
     "/products/{id}": {
@@ -52,7 +79,37 @@
       }
     }
   },
-  "definitions": {},
+  "definitions": {
+    "CreateProductRequestBody": {
+      "properties": {
+        "title": {
+          "title": "CreateProductRequestBody.title",
+          "type": "string"
+        },
+        "description": {
+          "title": "CreateProductRequestBody.description",
+          "type": "string"
+        },
+        "price": {
+          "title": "CreateProductRequestBody.price",
+          "type": "number"
+        },
+        "count": {
+          "title": "CreateProductRequestBody.count",
+          "type": "number"
+        }
+      },
+      "required": [
+        "title",
+        "description",
+        "price",
+        "count"
+      ],
+      "additionalProperties": false,
+      "title": "CreateProductRequestBody",
+      "type": "object"
+    }
+  },
   "securityDefinitions": {},
   "basePath": "/dev"
 };

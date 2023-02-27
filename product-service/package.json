@@ -5,10 +5,15 @@
   "main": "index.js",
   "scripts": {
     "test": "jest",
+    "swagger": "sls generate-swagger",
     "server:deploy": "sls deploy"
   },
   "author": "Vadzim Yermalitski",
   "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.0.3",
+    "pg": "^8.9.0"
+  },
   "devDependencies": {
     "@babel/core": "^7.21.0",
     "@babel/preset-env": "^7.20.2",
@@ -16,6 +21,7 @@
     "babel-loader": "^9.1.2",
     "jest": "^29.4.3",
     "serverless-auto-swagger": "^2.12.0",
+    "serverless-dotenv-plugin": "^4.0.2",
     "serverless-webpack": "^5.11.0",
     "webpack": "^5.75.0"
   }

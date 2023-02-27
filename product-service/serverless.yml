@@ -1,0 +1,42 @@
+service: product-service
+frameworkVersion: '3'
+
+provider:
+  name: aws
+  runtime: nodejs14.x
+  stage: dev
+  region: eu-central-1
+
+plugins:
+  - serverless-webpack
+  - serverless-auto-swagger
+
+package:
+  individually: true
+
+custom:
+  webpack:
+    webpackConfig: 'webpack.config.js'
+    includeModules: true
+    packager: 'npm'
+  autoswagger:
+    title: 'product-service-documentation'
+    apiType: 'http'
+    basePath: '/dev'
+
+functions:
+  getProductsList:
+    handler: handlers/getProductsList.getProductsList
+    events:
+      - http:
+          method: 'get'
+          path: 'products'
+          cors: true
+
+  getProductById:
+    handler: handlers/getProductById.getProductById
+    events:
+      - http:
+          method: "get"
+          path: "products/{id}"
+          cors: true

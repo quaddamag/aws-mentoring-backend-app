@@ -10,7 +10,6 @@ export const statusCode = {
 export const responseErrorMessage = {
     badRequest: 'Wrong input data.',
     notFound: 'No product found.',
-    internalServerError: 'An unknown error has occurred. Please try again later.',
 };
 
 export const headers = {
